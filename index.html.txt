@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>恒信科技 - 企业数字化解决方案服务商</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+        /* 导航栏 */
+        header {
+            width: 100%;
+            height: 70px;
+            background: #0f4c81;
+            position: fixed;
+            top: 0;
+            z-index: 999;
+        }
+        .nav-wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .logo {
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .nav-list a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .nav-list a:hover {
+            color: #ffc107;
+        }
+        /* 轮播横幅 */
+        .banner {
+            margin-top: 70px;
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, #0f4c81, #2196f3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        .banner h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .banner p {
+            font-size: 20px;
+            margin-bottom: 35px;
+        }
+        .btn {
+            padding: 14px 36px;
+            background: #ffc107;
+            color: #000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 17px;
+        }
+        .btn:hover {
+            background: #ffb300;
+        }
+        /* 通用区块 */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .title {
+            text-align: center;
+            font-size: 36px;
+            color: #222;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        .title::after {
+            content: "";
+            width: 80px;
+            height: 4px;
+            background: #0f4c81;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -15px;
+        }
+        /* 关于我们 */
+        .about-box {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+        .about-text {
+            flex: 1;
+        }
+        .about-text h3 {
+            font-size: 26px;
+            margin-bottom: 20px;
+            color: #0f4c81;
+        }
+        .about-text p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+        }
+        .about-img {
+            flex: 1;
+            height: 320px;
+            background: #e8f2fc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0f4c81;
+            font-size: 22px;
+        }
+        /* 产品服务 */
+        .product-wrap {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .product-card {
+            background: #f8f9fa;
+            padding: 40px 25px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .product-card:hover {
+            box-shadow: 0 8px 24px #ddd;
+            transform: translateY(-6px);
+        }
+        .product-card h4 {
+            font-size: 22px;
+            margin: 18px 0;
+            color: #0f4c81;
+        }
+        .product-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+        /* 客户案例 */
+        .case-wrap {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .case-item {
+            height: 160px;
+            background: #eef5fc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+        }
+        /* 联系我们 */
+        .contact {
+            background: #f5f7fa;
+            max-width: 100%;
+        }
+        .contact-box {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 60px;
+        }
+        .contact-info {
+            flex: 1;
+        }
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 25px;
+            color: #0f4c81;
+        }
+        .contact-info p {
+            margin: 14px 0;
+            font-size: 16px;
+            color: #444;
+        }
+        .contact-form {
+            flex: 1;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 15px;
+        }
+        .contact-form button {
+            width: 100%;
+            padding: 15px;
+            background: #0f4c81;
+            color: white;
+            border: none;
+            font-size: 17px;
+            cursor: pointer;
+        }
+        .contact-form button:hover {
+            background: #0c3c68;
+        }
+        /* 页脚 */
+        footer {
+            width: 100%;
+            padding: 40px 20px;
+            background: #0a2d4b;
+            color: #ccc;
+            text-align: center;
+        }
+        /* 移动端适配 */
+        @media(max-width:768px) {
+            .nav-list {
+                display: none;
+            }
+            .banner h1 {
+                font-size: 28px;
+            }
+            .about-box, .contact-box {
+                flex-direction: column;
+            }
+            .product-wrap {
+                grid-template-columns: 1fr;
+            }
+            .case-wrap {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="nav-wrap">
+            <div class="logo">恒信科技</div>
+            <div class="nav-list">
+                <a href="#home">首页</a>
+                <a href="#about">关于我们</a>
+                <a href="#product">产品服务</a>
+                <a href="#case">客户案例</a>
+                <a href="#contact">联系我们</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 首页横幅 -->
+    <div class="banner" id="home">
+        <div class="banner-content">
+            <h1>一站式企业数字化解决方案</h1>
+            <p>专注企业系统开发、网站定制、线上营销服务</p>
+            <a href="#contact" class="btn">立即咨询</a>
+        </div>
+    </div>
+
+    <!-- 关于我们 -->
+    <section id="about">
+        <h2 class="title">关于我们</h2>
+        <div class="about-box">
+            <div class="about-text">
+                <h3>10年行业深耕，服务超2000家企业</h3>
+                <p>恒信科技成立于2016年，是一家专注企业数字化转型的综合服务商。我们提供企业官网定制、商城系统、客户管理CRM、小程序开发、品牌营销全案等商业服务。<br><br>公司拥有专业研发、设计、运营团队，坚持标准化交付、售后终身维护，帮助传统企业打通线上渠道，降低运营成本，提升经营收益。</p>
+            </div>
+            <div class="about-img">企业办公实景图</div>
+        </div>
+    </section>
+
+    <!-- 产品服务 -->
+    <section id="product" style="background:#f8f9fa;">
+        <h2 class="title">核心产品服务</h2>
+        <div class="product-wrap">
+            <div class="product-card">
+                <h4>企业官网定制</h4>
+                <p>高端响应式官网，品牌形象展示，SEO优化，适配手机电脑，支持多语言版本</p>
+            </div>
+            <div class="product-card">
+                <h4>商城电商系统</h4>
+                <p>小程序商城、分销商城、直播带货系统，订单、会员、财务一体化管理</p>
+            </div>
+            <div class="product-card">
+                <h4>软件定制开发</h4>
+                <p>CRM客户管理、OA办公系统、进销存、工厂管理系统，按需定制功能</p>
+            </div>
+            <div class="product-card">
+                <h4>小程序/APP开发</h4>
+                <p>微信、抖音、支付宝小程序，安卓IOS原生APP，快速上线交付</p>
+            </div>
+            <div class="product-card">
+                <h4>品牌视觉设计</h4>
+                <p>LOGO、画册、宣传海报、包装设计，全套企业VI视觉体系</p>
+            </div>
+            <div class="product-card">
+                <h4>网络营销推广</h4>
+                <p>短视频运营、搜索引擎推广、私域流量运营，获客引流全方案</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 客户案例 -->
+    <section id="case">
+        <h2 class="title">合作客户</h2>
+        <div class="case-wrap">
+            <div class="case-item">制造企业A</div>
+            <div class="case-item">餐饮连锁B</div>
+            <div class="case-item">教育机构C</div>
+            <div class="case-item">商贸公司D</div>
+            <div class="case-item">医疗健康E</div>
+            <div class="case-item">装修建材F</div>
+            <div class="case-item">物流运输G</div>
+            <div class="case-item">服装品牌H</div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section class="contact" id="contact">
+        <h2 class="title">联系我们</h2>
+        <div class="contact-box">
+            <div class="contact-info">
+                <h3>咨询合作</h3>
+                <p>📞 咨询热线：400-888-9999</p>
+                <p>📧 企业邮箱：service@hengxin-tech.com</p>
+                <p>📍 公司地址：XX市XX区科创大厦18层</p>
+                <p>⏰ 工作时间：周一至周六 9:00-18:00</p>
+                <p>欢迎企业来电、上门洽谈定制化商业合作方案</p>
+            </div>
+            <div class="contact-form">
+                <input type="text" placeholder="您的公司名称">
+                <input type="text" placeholder="联系人姓名">
+                <input type="tel" placeholder="联系电话">
+                <textarea rows="4" placeholder="描述您的需求（网站/小程序/系统开发等）"></textarea>
+                <button>提交需求，专人对接</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部版权 -->
+    <footer>
+        <p>© 2026 恒信科技 版权所有 | 企业数字化服务商 | 沪ICP备12345678号</p>
+    </footer>
+</body>
+</html>
