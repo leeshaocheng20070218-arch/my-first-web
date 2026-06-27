@@ -3,352 +3,400 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>恒信科技 - 企业数字化解决方案服务商</title>
+    <title>云途数字 - 高端数字化商业解决方案</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Microsoft Yahei", sans-serif;
+            font-family: "Microsoft YaHei", sans-serif;
         }
-        /* 导航栏 */
+        a {
+            text-decoration: none;
+        }
+        li {
+            list-style: none;
+        }
+        /* 顶部导航栏容器 */
         header {
             width: 100%;
-            height: 70px;
-            background: #0f4c81;
             position: fixed;
             top: 0;
-            z-index: 999;
+            left: 0;
+            z-index: 9999;
+            background: rgba(10, 25, 45, 0.92);
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
         }
-        .nav-wrap {
-            max-width: 1200px;
+        /* 滚动导航阴影效果 */
+        header.active {
+            box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+        }
+        .nav-container {
+            max-width: 1300px;
             margin: 0 auto;
-            height: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
+            height: 80px;
+            padding: 0 30px;
         }
         .logo {
             color: #fff;
-            font-size: 24px;
-            font-weight: bold;
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
-        .nav-list a {
-            color: #fff;
-            text-decoration: none;
-            margin-left: 30px;
+        .logo span {
+            color: #40a9ff;
+        }
+        /* 主菜单容器 */
+        .main-menu {
+            display: flex;
+            gap: 8px;
+        }
+        .menu-item {
+            position: relative;
+            padding: 0 16px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+        .menu-item > a {
+            color: #e6edf7;
             font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .menu-item:hover > a {
+            color: #40a9ff;
+        }
+        /* 下拉一级子菜单 */
+        .sub-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 220px;
+            background: #fff;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            border-radius: 6px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        .menu-item:hover .sub-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .sub-menu li {
+            padding: 0;
+            position: relative;
+        }
+        .sub-menu li a {
+            display: block;
+            padding: 14px 22px;
+            color: #222;
+            font-size: 15px;
+            transition: all 0.25s;
+        }
+        .sub-menu li a:hover {
+            background: #f0f7ff;
+            color: #40a9ff;
+            padding-left: 28px;
+        }
+        /* 二级嵌套子菜单 */
+        .sub-two {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            width: 220px;
+            background: #fff;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            border-radius: 6px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        .sub-menu li:hover .sub-two {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        /* 咨询按钮 */
+        .consult-btn {
+            padding: 10px 26px;
+            background: linear-gradient(135deg, #1890ff, #40a9ff);
+            color: #fff;
+            border-radius: 50px;
+            font-weight: 500;
             transition: 0.3s;
         }
-        .nav-list a:hover {
-            color: #ffc107;
+        .consult-btn:hover {
+            box-shadow: 0 4px 16px rgba(24,144,255,0.4);
         }
-        /* 轮播横幅 */
+        /* 横幅区域 */
         .banner {
-            margin-top: 70px;
+            margin-top: 80px;
             width: 100%;
-            height: 500px;
-            background: linear-gradient(135deg, #0f4c81, #2196f3);
+            height: 620px;
+            background: linear-gradient(150deg, #0a192d 0%, #112240 50%, #1d3557 100%);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             color: white;
             text-align: center;
+            padding: 0 20px;
         }
         .banner h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
+            font-size: 52px;
+            margin-bottom: 24px;
         }
         .banner p {
             font-size: 20px;
-            margin-bottom: 35px;
+            color: #a0b4d8;
+            max-width: 700px;
+            line-height: 1.8;
+            margin-bottom: 40px;
         }
-        .btn {
-            padding: 14px 36px;
-            background: #ffc107;
-            color: #000;
-            text-decoration: none;
+        .banner-buttons a {
+            display: inline-block;
+            margin: 0 12px;
+            padding: 16px 38px;
             border-radius: 50px;
-            font-weight: bold;
+            font-size: 17px;
+            font-weight: 500;
+        }
+        .btn-primary {
+            background: #40a9ff;
+            color: #fff;
+        }
+        .btn-outline {
+            border: 1px solid #40a9ff;
+            color: #40a9ff;
+            background: transparent;
+        }
+        /* 通用区块样式 */
+        section {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 90px 30px;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        .section-title h2 {
+            font-size: 38px;
+            color: #0a192d;
+            margin-bottom: 16px;
+        }
+        .section-title p {
+            color: #666;
             font-size: 17px;
         }
-        .btn:hover {
-            background: #ffb300;
-        }
-        /* 通用区块 */
-        section {
-            padding: 80px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .title {
-            text-align: center;
-            font-size: 36px;
-            color: #222;
-            margin-bottom: 60px;
-            position: relative;
-        }
-        .title::after {
-            content: "";
-            width: 80px;
+        .section-title .line {
+            width: 90px;
             height: 4px;
-            background: #0f4c81;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            bottom: -15px;
+            background: linear-gradient(90deg,#1890ff,#40a9ff);
+            margin: 18px auto;
+            border-radius: 2px;
         }
-        /* 关于我们 */
-        .about-box {
-            display: flex;
-            gap: 50px;
-            align-items: center;
-        }
-        .about-text {
-            flex: 1;
-        }
-        .about-text h3 {
-            font-size: 26px;
-            margin-bottom: 20px;
-            color: #0f4c81;
-        }
-        .about-text p {
-            font-size: 16px;
-            line-height: 1.8;
-            color: #555;
-        }
-        .about-img {
-            flex: 1;
-            height: 320px;
-            background: #e8f2fc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #0f4c81;
-            font-size: 22px;
-        }
-        /* 产品服务 */
-        .product-wrap {
+        /* 服务板块 */
+        .service-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 35px;
         }
-        .product-card {
-            background: #f8f9fa;
-            padding: 40px 25px;
-            text-align: center;
-            transition: 0.3s;
+        .service-card {
+            background: #fff;
+            padding: 45px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.06);
+            transition: all 0.35s ease;
         }
-        .product-card:hover {
-            box-shadow: 0 8px 24px #ddd;
-            transform: translateY(-6px);
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(24,144,255,0.15);
         }
-        .product-card h4 {
-            font-size: 22px;
-            margin: 18px 0;
-            color: #0f4c81;
-        }
-        .product-card p {
-            color: #666;
-            line-height: 1.7;
-        }
-        /* 客户案例 */
-        .case-wrap {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-        .case-item {
-            height: 160px;
-            background: #eef5fc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #333;
-        }
-        /* 联系我们 */
-        .contact {
-            background: #f5f7fa;
-            max-width: 100%;
-        }
-        .contact-box {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            gap: 60px;
-        }
-        .contact-info {
-            flex: 1;
-        }
-        .contact-info h3 {
+        .service-card h3 {
             font-size: 24px;
-            margin-bottom: 25px;
-            color: #0f4c81;
+            color: #0a192d;
+            margin: 18px 0;
         }
-        .contact-info p {
-            margin: 14px 0;
-            font-size: 16px;
-            color: #444;
-        }
-        .contact-form {
-            flex: 1;
-        }
-        .contact-form input, .contact-form textarea {
-            width: 100%;
-            padding: 14px;
-            margin-bottom: 16px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 15px;
-        }
-        .contact-form button {
-            width: 100%;
-            padding: 15px;
-            background: #0f4c81;
-            color: white;
-            border: none;
-            font-size: 17px;
-            cursor: pointer;
-        }
-        .contact-form button:hover {
-            background: #0c3c68;
+        .service-card p {
+            color: #555;
+            line-height: 1.8;
         }
         /* 页脚 */
         footer {
             width: 100%;
-            padding: 40px 20px;
-            background: #0a2d4b;
-            color: #ccc;
+            background: #0a192d;
+            color: #a0b4d8;
+            padding: 60px 30px 30px;
             text-align: center;
         }
         /* 移动端适配 */
-        @media(max-width:768px) {
-            .nav-list {
+        @media (max-width:992px) {
+            .main-menu {
                 display: none;
             }
+            .service-grid {
+                grid-template-columns: 1fr 1fr;
+            }
             .banner h1 {
-                font-size: 28px;
+                font-size: 36px;
             }
-            .about-box, .contact-box {
-                flex-direction: column;
-            }
-            .product-wrap {
+        }
+        @media (max-width:768px) {
+            .service-grid {
                 grid-template-columns: 1fr;
             }
-            .case-wrap {
-                grid-template-columns: repeat(2, 1fr);
+            .banner-buttons a {
+                margin: 10px 0;
+                display: block;
             }
         }
     </style>
 </head>
 <body>
-    <!-- 导航栏 -->
-    <header>
-        <div class="nav-wrap">
-            <div class="logo">恒信科技</div>
-            <div class="nav-list">
-                <a href="#home">首页</a>
-                <a href="#about">关于我们</a>
-                <a href="#product">产品服务</a>
-                <a href="#case">客户案例</a>
-                <a href="#contact">联系我们</a>
-            </div>
+    <!-- 顶部导航栏（带多级下拉菜单Menu Bar） -->
+    <header id="navbar">
+        <div class="nav-container">
+            <div class="logo">云途<span>Digital</span></div>
+            <!-- 主菜单 -->
+            <ul class="main-menu">
+                <!-- 首页 无下拉 -->
+                <li class="menu-item">
+                    <a href="#home">首页</a>
+                </li>
+                <!-- 解决方案 一级下拉 -->
+                <li class="menu-item">
+                    <a href="#solution">解决方案 ▾</a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="#">企业数字化官网</a>
+                        </li>
+                        <li>
+                            <a href="#">电商商城系统 ▸</a>
+                            <!-- 二级嵌套子菜单 -->
+                            <ul class="sub-two">
+                                <li><a href="#">小程序商城</a></li>
+                                <li><a href="#">分销带货系统</a></li>
+                                <li><a href="#">直播电商平台</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">企业管理软件</a>
+                        </li>
+                        <li>
+                            <a href="#">私域流量系统</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- 产品中心 -->
+                <li class="menu-item">
+                    <a href="#product">产品中心 ▾</a>
+                    <ul class="sub-menu">
+                        <li><a href="#">CRM客户管理</a></li>
+                        <li><a href="#">OA办公自动化</a></li>
+                        <li><a href="#">进销存管理系统</a></li>
+                        <li><a href="#">定制APP开发</a></li>
+                    </ul>
+                </li>
+                <!-- 案例展示 -->
+                <li class="menu-item">
+                    <a href="#case">客户案例 ▾</a>
+                    <ul class="sub-menu">
+                        <li><a href="#">制造业案例</a></li>
+                        <li><a href="#">餐饮连锁案例</a></li>
+                        <li><a href="#">教育行业案例</a></li>
+                        <li><a href="#">零售品牌案例</a></li>
+                    </ul>
+                </li>
+                <!-- 关于我们 -->
+                <li class="menu-item">
+                    <a href="#about">关于我们 ▾</a>
+                    <ul class="sub-menu">
+                        <li><a href="#">公司简介</a></li>
+                        <li><a href="#">发展历程</a></li>
+                        <li><a href="#">团队介绍</a></li>
+                        <li><a href="#">荣誉资质</a></li>
+                    </ul>
+                </li>
+                <!-- 联系我们 -->
+                <li class="menu-item">
+                    <a href="#contact">联系我们</a>
+                </li>
+            </ul>
+            <a href="#contact" class="consult-btn">免费方案咨询</a>
         </div>
     </header>
 
     <!-- 首页横幅 -->
     <div class="banner" id="home">
-        <div class="banner-content">
-            <h1>一站式企业数字化解决方案</h1>
-            <p>专注企业系统开发、网站定制、线上营销服务</p>
-            <a href="#contact" class="btn">立即咨询</a>
+        <h1>全链路企业数字化商业服务</h1>
+        <p>深耕数字化开发12年，为制造、零售、餐饮、教育等全行业提供网站、系统、小程序、品牌营销一站式商用解决方案</p>
+        <div class="banner-buttons">
+            <a href="#solution" class="btn-primary">查看解决方案</a>
+            <a href="#case" class="btn-outline">浏览客户案例</a>
         </div>
     </div>
 
-    <!-- 关于我们 -->
-    <section id="about">
-        <h2 class="title">关于我们</h2>
-        <div class="about-box">
-            <div class="about-text">
-                <h3>10年行业深耕，服务超2000家企业</h3>
-                <p>恒信科技成立于2016年，是一家专注企业数字化转型的综合服务商。我们提供企业官网定制、商城系统、客户管理CRM、小程序开发、品牌营销全案等商业服务。<br><br>公司拥有专业研发、设计、运营团队，坚持标准化交付、售后终身维护，帮助传统企业打通线上渠道，降低运营成本，提升经营收益。</p>
-            </div>
-            <div class="about-img">企业办公实景图</div>
+    <!-- 解决方案板块 -->
+    <section id="solution">
+        <div class="section-title">
+            <h2>核心解决方案</h2>
+            <div class="line"></div>
+            <p>针对不同行业定制专属数字化商业工具，降低企业运营成本</p>
         </div>
-    </section>
-
-    <!-- 产品服务 -->
-    <section id="product" style="background:#f8f9fa;">
-        <h2 class="title">核心产品服务</h2>
-        <div class="product-wrap">
-            <div class="product-card">
-                <h4>企业官网定制</h4>
-                <p>高端响应式官网，品牌形象展示，SEO优化，适配手机电脑，支持多语言版本</p>
+        <div class="service-grid">
+            <div class="service-card">
+                <h3>品牌官网定制</h3>
+                <p>高端响应式品牌官网，SEO优化，多语言支持，适配手机、平板、电脑，打造专业企业线上门面。</p>
             </div>
-            <div class="product-card">
-                <h4>商城电商系统</h4>
-                <p>小程序商城、分销商城、直播带货系统，订单、会员、财务一体化管理</p>
+            <div class="service-card">
+                <h3>电商交易系统</h3>
+                <p>小程序商城、直播带货、会员分销、积分营销一体化，打通线上线下商品交易链路。</p>
             </div>
-            <div class="product-card">
-                <h4>软件定制开发</h4>
-                <p>CRM客户管理、OA办公系统、进销存、工厂管理系统，按需定制功能</p>
+            <div class="service-card">
+                <h3>企业内部管理系统</h3>
+                <p>CRM、OA、进销存、工厂生产管理定制，统一数据后台，提升内部办公效率。</p>
             </div>
-            <div class="product-card">
-                <h4>小程序/APP开发</h4>
-                <p>微信、抖音、支付宝小程序，安卓IOS原生APP，快速上线交付</p>
+            <div class="service-card">
+                <h3>全平台小程序开发</h3>
+                <p>微信、抖音、支付宝、百度多端小程序快速开发，低成本获客，轻量化运营。</p>
             </div>
-            <div class="product-card">
-                <h4>品牌视觉设计</h4>
-                <p>LOGO、画册、宣传海报、包装设计，全套企业VI视觉体系</p>
+            <div class="service-card">
+                <h3>原生APP定制开发</h3>
+                <p>安卓、IOS双端原生应用，支持商城、预约、管理、社交等各类商业功能开发。</p>
             </div>
-            <div class="product-card">
-                <h4>网络营销推广</h4>
-                <p>短视频运营、搜索引擎推广、私域流量运营，获客引流全方案</p>
+            <div class="service-card">
+                <h3>品牌营销全案</h3>
+                <p>短视频运营、搜索推广、私域流量搭建，配套视觉设计，全方位线上获客。</p>
             </div>
         </div>
     </section>
 
-    <!-- 客户案例 -->
-    <section id="case">
-        <h2 class="title">合作客户</h2>
-        <div class="case-wrap">
-            <div class="case-item">制造企业A</div>
-            <div class="case-item">餐饮连锁B</div>
-            <div class="case-item">教育机构C</div>
-            <div class="case-item">商贸公司D</div>
-            <div class="case-item">医疗健康E</div>
-            <div class="case-item">装修建材F</div>
-            <div class="case-item">物流运输G</div>
-            <div class="case-item">服装品牌H</div>
-        </div>
-    </section>
-
-    <!-- 联系我们 -->
-    <section class="contact" id="contact">
-        <h2 class="title">联系我们</h2>
-        <div class="contact-box">
-            <div class="contact-info">
-                <h3>咨询合作</h3>
-                <p>📞 咨询热线：400-888-9999</p>
-                <p>📧 企业邮箱：service@hengxin-tech.com</p>
-                <p>📍 公司地址：XX市XX区科创大厦18层</p>
-                <p>⏰ 工作时间：周一至周六 9:00-18:00</p>
-                <p>欢迎企业来电、上门洽谈定制化商业合作方案</p>
-            </div>
-            <div class="contact-form">
-                <input type="text" placeholder="您的公司名称">
-                <input type="text" placeholder="联系人姓名">
-                <input type="tel" placeholder="联系电话">
-                <textarea rows="4" placeholder="描述您的需求（网站/小程序/系统开发等）"></textarea>
-                <button>提交需求，专人对接</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- 底部版权 -->
+    <!-- 页脚 -->
     <footer>
-        <p>© 2026 恒信科技 版权所有 | 企业数字化服务商 | 沪ICP备12345678号</p>
+        <p>© 2026 云途数字科技有限公司 版权所有 | 商用网站系统服务商 | ICP备12345678号</p>
     </footer>
+
+    <!-- 简单JS：滚动导航栏添加阴影效果 -->
+    <script>
+        const nav = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if(window.scrollY > 50) {
+                nav.classList.add('active');
+            } else {
+                nav.classList.remove('active');
+            }
+        })
+    </script>
 </body>
 </html>
